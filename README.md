@@ -43,14 +43,13 @@ Open index.html in your browser.
 
 Click the Download Resume button to generate and download your PDF resume.
 ```
-## portfolio can be accessed here:
-https://MamathaLolugu.github.io/Portfolio-Website/
+
 
 
 ## Contact
 
 Email: mamathalolugu@gmail.com
 
-LinkedIn: linkedin.com/in/MamathaLolugu
+LinkedIn: www.linkedin.com/in/MamathaLolugu
 
 ##  This portfolio website is developed for my learning purpose. It showcases projects, technical skills, and allows users to download a resume.
