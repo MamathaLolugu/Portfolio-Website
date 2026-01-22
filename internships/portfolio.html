@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mamatha's Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+    .btn:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="logo">
+        <img src="logo.jpg" alt="Logo" class="logo-img">
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#resume">Resume</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- About -->
+  <section id="about" class="section">
+    <div class="container about-content">
+      <img src="myphoto.jpg" alt="My Photo" class="profile-img">
+      <div>
+        <h1>ABOUT ME</h1>
+        <p>I'm <strong>MAMATHA LOLUGU</strong>,</p>
+        <p>I'm a dedicated and results-driven full stack developer with hands-on experience in building dynamic, responsive web applications using modern technologies. I specialize in crafting clean, maintainable code and user-centric designs. With strong proficiency in <strong>HTML, CSS, JavaScript, Python, Django, and SQL</strong>, I’ve successfully completed projects which was given to me.</p>
+      
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="section">
+    <div class="container">
+      <h2>Skills</h2>
+      <ul class="skills-list">
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>SQL</li>
+        <li>Python</li>
+        <li>Django</li>
+        
+      </ul>
+      <p>I have basic knowledge on the skills I have mentioned above and also I have completed several projects using those languages which helped me to develop my skills beyond my knowledge.</p>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="section">
+    <div class="container">
+      <h2>Projects</h2>
+      <p>I have completed two projects by using HTML, JS, CSS, Django:</p>
+      <p><strong>MEAL PREORDER PLATFORM</strong><br>
+      Meal preorder platform is a user-friendly website created using HTML, CSS, JS for ordering meals ahead of time. This website contains variety of options which allow users to explore menu, order, billing to place order.</p>
+      <div class="project">
+          <h3>🍽️ Meal Preorder Platform</h3>
+          <p>please zoom the image for clear view...</p>
+          <div class="project-image">
+              <img src="projet.jpg" alt="project" class="project-img"> 
+          </div>
+      </div>
+      <p><strong>BLOCKCHAIN-BASED SUPPLY CHAIN TRACKING WITH DJANGO</strong><br>
+      This project, "Blockchain-Based Supply Chain Tracking System using Django", aims to build a web-based platform created by using Django, HTML, CSS, Bootstrap, SQLite that integrates blockchain technology with Django to deliver a transparent and efficient tracking system. The system allows users to manage shipments, products, and suppliers while maintaining a secure digital trail of every transaction on the blockchain.</p>
+       <div class="project">
+          <h3>BLOCKCHAIN-BASED SUPPLY CHAIN</h3>
+          <p>please zoom the image for clear view...</p>
+          <div class="project-image1">
+              <img src="django.jpg" alt="project" class="project-img1"> 
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resume -->
+  <section id="resume" class="section">
+    <div class="container">
+      <h2>Resume</h2>
+      <a href="#" class="btn" id="downloadResume">Download Resume</a>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section">
+    <div class="container">
+      <h2>Contact Me</h2>
+      <p>Email: mamathalolugu@gmail.com.com</p>
+      <p>LinkedIn: linkedin.com/in/Mamatha Lolugu</p>
+    </div>
+  </section>
+
+  !-- Resume Script -->
+ <script>
+    const { jsPDF } = window.jspdf;
+
+    document.getElementById("downloadResume").addEventListener("click", function (event) {
+      event.preventDefault();
+
+      const doc = new jsPDF();
+      let y = 20;
+
+      doc.setFontSize(22);
+      doc.text("Mamatha Lolugu", 10, y);
+      y += 10;
+
+      doc.setFontSize(16);
+      doc.text("Full Stack Developer", 10, y);
+      y += 10;
+
+      doc.setFontSize(14);
+      doc.text("Contact", 10, y);
+      y += 8;
+
+      doc.setFontSize(11);
+      doc.text("Phone: +91 7416707976", 10, y);
+      y += 6;
+      doc.text("Email: mamathalolugu@gmail.com", 10, y);
+      y += 6;
+      doc.text("LinkedIn: linkedin.com/in/MamathaLolugu", 10, y);
+      y += 10;
+
+      doc.setFontSize(14);
+      doc.text("Projects", 10, y);
+      y += 8;
+
+      const projects = [
+        "1. MEAL PREORDER PLATFORM - HTML, CSS, JS\n" +
+        "   A user-friendly site for ordering meals in advance. Includes menu exploration, ordering, and billing.",
+
+        "2. BLOCKCHAIN-BASED SUPPLY CHAIN TRACKING WITH DJANGO - Django, HTML, CSS, Bootstrap, SQLite\n" +
+        "   Web-based platform integrating blockchain with Django for transparent and efficient shipment tracking."
+      ];
+      projects.forEach(project => {
+        const lines = doc.splitTextToSize(project, 180);
+        doc.text(lines, 10, y);
+        y += lines.length * 6 + 4;
+      });
+
+      doc.setFontSize(14);
+      doc.text("Technical Skills", 10, y);
+      y += 8;
+      const skills = [
+        "Languages: C, Python, SQL, HTML, CSS, JAVA, DBMS",
+        "Developer Tools: Visual Studio Code",
+        "Area of Interest: App Development, Web Development"
+      ];
+      skills.forEach(skill => {
+        doc.text(skill, 10, y);
+        y += 6;
+      });
+
+      y += 4;
+      doc.setFontSize(14);
+      doc.text("Certifications & Participations", 10, y);
+      y += 8;
+
+      const certifications = [
+        "• Workshop by JNTUGV",
+        "• Skill Development Program - Web Dev with Django (Govt of AP)",
+        "• Workshop on Advanced UI Dev with JS (IIC)",
+        "• Certified in Java, Python, SQL, Full Stack Developer (One Roadmap)"
+      ];
+      certifications.forEach(cert => {
+        doc.text(cert, 10, y);
+        y += 6;
+      });
+
+      y += 4;
+      doc.setFontSize(14);
+      doc.text("Education", 10, y);
+      y += 8;
+
+      const education = [
+        "Aditya Institute of Technology and Management",
+        "B.Tech in Information Technology - CGPA: 8.73",
+        "",
+        "Sri Chaitanya Junior College",
+        "Intermediate - Percentage: 95%",
+        "",
+        "Geetanjali School",
+        "SSC - Grade: 10"
+      ];
+      education.forEach(line => {
+        doc.text(line, 10, y);
+        y += 6;
+      });
+
+      doc.save("Mamatha_Lolugu_Resume.pdf");
+    });
+  </script>
+
+</body>
+</html>
